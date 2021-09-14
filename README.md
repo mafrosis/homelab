@@ -38,3 +38,11 @@ delete system name-server
 
 * https://help.ui.com/hc/en-us/articles/115002673188-EdgeRouter-DHCP-Server-Using-Dnsmasq
 * https://community.ui.com/questions/EdgeRouter-X-DNS-local-hosts-resolved-using-Dnsmasq/dd3b1d6a-b018-4c31-bda0-b5ddf464392d#answer/3509ac8e-ec64-4a0f-9e01-0eb8b57d95a8
+
+
+
+https://community.ui.com/questions/No-internet-on-vlan/646846ae-de1b-4172-90c3-01f82cb59d80
+https://community.ui.com/questions/Connected-No-Internet-Access-after-VLANs-but-internet-still-works/79929385-6286-469b-a1f2-79db17d03f15
+https://community.ui.com/questions/Help-Moving-the-guest-network-to-its-on-Vlan-no-internet-once-Vlan-active-and-not-sure-why/d8de1ce6-aee6-4258-86a7-2f5428022ddc
+https://www.youtube.com/watch?v=raZHQjaj4iY
+https://help.ui.com/hc/en-us/articles/218889067-EdgeRouter-How-to-Create-a-Guest-LAN-Firewall-Rule
