@@ -149,3 +149,39 @@ $ show dns forwarding nameservers
 203.134.24.70 available via 'ppp pppoe0'
 203.134.26.70 available via 'ppp pppoe0'
 ```
+
+
+Port Forwarding
+----------
+
+### Setup auto-firewall, WAN and LAN interfaces
+
+```
+set port-forward auto-firewall enable
+set port-forward wan-interface eth0
+set port-forward lan-interface eth1
+```
+
+### Turn off Hairpin NAT
+
+This enables clients to use the external IP to access internal hosts. This isn't used; port forwarding
+sends traffic onto the correct host.
+
+```
+set port-forward hairpin-nat disable
+```
+
+### Setup a port forward rule
+
+```
+set port-forward rule 1 description ca
+set port-forward rule 1 forward-to address 192.168.1.198
+set port-forward rule 1 forward-to port 8443
+set port-forward rule 1 original-port 443
+set port-forward rule 1 protocol tcp
+```
+
+### References
+
+* https://help.ui.com/hc/en-us/articles/217367937-EdgeRouter-Port-Forwarding
+* https://help.ui.com/hc/en-us/articles/204952134
