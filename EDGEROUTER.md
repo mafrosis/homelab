@@ -185,3 +185,15 @@ set port-forward rule 1 protocol tcp
 
 * https://help.ui.com/hc/en-us/articles/217367937-EdgeRouter-Port-Forwarding
 * https://help.ui.com/hc/en-us/articles/204952134
+
+
+
+mDNS Repeater for Avahi/Chromecast
+----------
+
+Enable the `repeater` on LAN and IOT interfaces. Do not use `reflector`, as that floods mDNS to all
+interfaces including WAN.
+```
+set service mdns repeater interface switch0
+set service mdns repeater interface switch0.20
+```
