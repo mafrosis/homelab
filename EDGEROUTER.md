@@ -87,3 +87,65 @@ $ clear dhcp lease ip 192.168.1.254
 [ ok ] Stopping dnsmasq (via systemctl): dnsmasq.service.
 [ ok ] Starting dnsmasq (via systemctl): dnsmasq.service.
 ```
+
+
+DNS
+----------
+
+DNS forwarding to switch0, switch0.20, switch0.30
+
+### Use DNSmasq to resolve local statically mapped hostnames
+```
+set service dhcp-server use-dnsmasq enable
+```
+
+### Set a large local DNS cache size
+```
+set service dns forwarding cache-size 500
+```
+
+### Listen on all VLANs for DNS traffic
+```
+delete service dns forwarding listen-on
+set service dns forwarding listen-on switch0
+set service dns forwarding listen-on switch0.20
+set service dns forwarding listen-on switch0.30
+```
+
+### Set the upstream DNS name server to pihole
+
+Tell the DNS forwarder to use the system DNS upstream, and set the edgreouter global upstream DNS
+to the pihole.
+```
+delete service dns forwarding name-server
+set service dns forwarding system
+set system name-server 192.168.1.198
+```
+
+### Use public DNS for the Guest network
+```
+set service dhcp-server shared-network-name Guest subnet 192.168.30.0/24 dns-server 1.1.1.1
+```
+
+### References
+
+* https://help.ui.com/hc/en-us/articles/115002673188-EdgeRouter-DHCP-Server-Using-Dnsmasq
+* https://help.ui.com/hc/en-us/articles/115010913367-EdgeRouter-DNS-Forwarding-Setup-and-Options
+* https://community.ui.com/questions/EdgeRouter-X-DNS-local-hosts-resolved-using-Dnsmasq/dd3b1d6a-b018-4c31-bda0-b5ddf464392d
+* https://community.ui.com/questions/EdgeRouter-DNS-different-than-DHCP-DNS/581612f0-2b11-453c-8f25-51a83be204db
+
+### CLI
+
+```
+$ show dns forwarding nameservers
+-----------------------------------------------
+   Nameservers configured for DNS forwarding
+-----------------------------------------------
+192.168.1.198 available via 'optionally configured'
+
+-----------------------------------------------
+ Nameservers NOT configured for DNS forwarding
+-----------------------------------------------
+203.134.24.70 available via 'ppp pppoe0'
+203.134.26.70 available via 'ppp pppoe0'
+```
